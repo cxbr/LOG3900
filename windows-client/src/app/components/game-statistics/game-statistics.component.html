@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<div class="main-container">
+    <div class="flex-row center">
+        <p class="title"><b> Bilan des parties</b></p>
+    </div>
+
+    <div class="board flex-column">
+        <table>
+            <div class="card flex-row black">
+                <div class="flex-column center">
+                    <tr>
+                        <b>Nombre de parties jouées</b>
+                    </tr>
+                </div>
+                <div class="divider"></div>
+                <div class="flex-row center result">
+                    <div>
+                        <tr>
+                            <b>{{ numberGames }}</b>
+                        </tr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card flex-row black">
+                <div class="flex-column center">
+                    <tr>
+                        <b>Nombre de parties gagnées</b>
+                    </tr>
+                </div>
+                <div class="divider"></div>
+                <div class="flex-row center result">
+                    <div>
+                        <tr>
+                            <b>{{ numberWinGames }}</b>
+                        </tr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card flex-row black">
+                <div class="flex-column center">
+                    <tr>
+                        <b>Moyenne de différences trouvées par partie</b>
+                    </tr>
+                </div>
+                <div class="divider"></div>
+                <div class="flex-row center result">
+                    <div>
+                        <tr>
+                            <b>{{ averageGameDiff }}</b>
+                        </tr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card flex-row black">
+                <div class="flex-column center">
+                    <tr>
+                        <b>Temps moyen par partie</b>
+                    </tr>
+                </div>
+                <div class="divider"></div>
+                <div class="flex-row center time-result">
+                    <div>
+                        <tr>
+                            <b>{{ formatTime(averageTimerGame) }}</b>
+                        </tr>
+                    </div>
+                </div>
+            </div>
+        </table>
+    </div>
+</div>

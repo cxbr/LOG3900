@@ -1,0 +1,77 @@
+<div *ngIf="this.showChannelSelector"></div>
+<div class="center black" style="text-align: center">
+    <div class="flex-row center chat-header">
+        <button *ngIf="this.currentView === 2" class="small-button-left" (click)="closeModal()">
+            <span class="material-icons icon"> cancel </span>
+        </button>
+        <button *ngIf="this.currentView === 1 || this.currentView === 0" class="small-button-left" (click)="changeView(2)">
+            <span class="material-icons icon"> chevron_left </span>
+        </button>
+        <button *ngIf="this.currentView === 3" class="small-button-left" (click)="onReturnToChatFromInfoButton()">
+            <span class="material-icons icon"> chevron_left </span>
+        </button>
+        <p>{{ this.headerTitle }}</p>
+        <button *ngIf="this.currentView === 0" class="small-button-right" (click)="showChannelCreationModal()">
+            <span class="material-icons icon"> edit_note </span>
+        </button>
+        <button *ngIf="this.currentView === 2" class="small-button-left" (click)="changeView(0)">
+            <span class="material-icons icon"> playlist_add </span>
+        </button>
+        <button *ngIf="this.currentView === 1" class="small-button-left" (click)="changeView(3)">
+            <span class="material-icons icon"> info </span>
+        </button>
+        <button *ngIf="this.currentView === 3" class="small-button-right detail"><span class="material-icons icon"> people </span></button>
+    </div>
+
+    <!-- Subscription View -->
+    <div class="flex-row center chat-header" *ngIf="this.currentView === 0">
+        <div>
+            <input class="search-bar" type="text" placeholder="Filtrer" [(ngModel)]="searchText" />
+
+            <div class="channel-selection-container">
+                <app-channel-selection-item
+                    *ngFor="let channel of getChannelsAfterFiltering(availableChannels, searchText)"
+                    [channel]="channel"
+                    (notifyClick)="subscribeToChannel($event)"
+                    (notifyDelete)="deleteChannel($event)"
+                    [closeButtonType]="'delete'"
+                ></app-channel-selection-item>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="this.currentView === 1">
+        <app-chat-box [channel]="this.channelUsedByChatComponent" [username]="this.username"></app-chat-box>
+    </div>
+
+    <!-- Channel Selection View -->
+    <div class="flex-row center chat-header" *ngIf="this.currentView === 2">
+        <div class="channel-selection-container">
+            <app-channel-selection-item
+                *ngFor="let channel of subscribedChannels"
+                [channel]="channel"
+                (notifyClick)="enterChannel($event)"
+                (notifyDelete)="unsubscribeFromChannel($event)"
+                [closeButtonType]="'leave'"
+            ></app-channel-selection-item>
+        </div>
+
+        <div *ngIf="subscribedChannels.length === 0">
+            <p>Veuillez rejoindre un canal pour commencer a clavarder.</p>
+        </div>
+    </div>
+
+    <!-- Channel Info View -->
+    <div class="flex-row center chat-header" *ngIf="this.currentView === 3">
+        <div class="channel-selection-container">
+            <p><b>Utilisateurs abonnés à ce canal :</b></p>
+            <div *ngFor="let user of subscribedUsersInCurrentChannel">
+                <p>{{ user.username }}</p>
+            </div>
+
+            <div *ngIf="subscribedUsersInCurrentChannel.length === 0">
+                <p>Chargement...</p>
+            </div>
+        </div>
+    </div>
+</div>

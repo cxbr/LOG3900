@@ -1,0 +1,20 @@
+<div *ngIf="data.gameFinished">
+    <p *ngIf="data.observer">C'est terminé, merci d'avoir regardé !</p>
+    <p *ngIf="data.limitedTimeMode">C'est terminé, merci d'avoir joué !</p>
+    <p *ngIf="!data.limitedTimeMode && data.won">Félicitation, vous avez gagné ce jeu ! {{ bestTimeMessage }}</p>
+    <p *ngIf="!data.limitedTimeMode && data.tied">Égalité</p>
+    <p *ngIf="!data.limitedTimeMode && data.lost">Oh non, vous avez perdu ce jeu !</p>
+    <div class="flex-row center">
+        <button *ngIf="data.observer || data.limitedTimeMode" routerLink="/home">Terminer</button>
+        <button *ngIf="!data.observer && !data.limitedTimeMode" (click)="openReview()">Terminer</button>
+        <button *ngIf="!data.limitedTimeMode && !data.observer" (click)="openVideoReplay()">Reprise Vidéo</button>
+    </div>
+</div>
+
+<div *ngIf="!data.gameFinished">
+    <p>Êtes-vous sûr de vouloir abandonner ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitAbandon(true)">Oui</button>
+        <button (click)="emitAbandon(false)">Non</button>
+    </div>
+</div>

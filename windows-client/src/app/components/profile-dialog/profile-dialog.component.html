@@ -1,0 +1,41 @@
+<div class="flex-column dialog">
+    <div class="flex-row space-between">
+        <app-avatar-image [avatar]="user.avatar"></app-avatar-image>
+        <p>{{ user.username }}</p>
+        <button *ngIf="user.state === 'isStranger'" class="round-button" (click)="sendFriendRequest(user._id)">
+            <span class="material-icons">person_add</span>
+        </button>
+        <button *ngIf="user.state === 'isFriend'" class="round-button" (click)="removeFriend(user._id)">
+            <span class="material-icons">person_remove</span>
+        </button>
+        <div *ngIf="user.state === 'requestSent'">En attente</div>
+        <div *ngIf="user.state === 'requestReceived'" class="flex-row space-between button-container">
+            <button class="round-button" (click)="acceptFriendRequest(user._id)">
+                <span class="material-icons">check</span>
+            </button>
+            <button class="round-button" (click)="declineFriendRequest(user._id)">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        <div *ngIf="user.state === 'requestUnseen'" class="flex-row space-between button-container">
+            <div class="indicator"></div>
+            <button class="round-button" (click)="acceptFriendRequest(user._id)">
+                <span class="material-icons">check</span>
+            </button>
+            <button class="round-button" (click)="declineFriendRequest(user._id)">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+    </div>
+    <p>Amis</p>
+    <div *ngIf="isFriend" class="friend-message">Vous et {{ user.username }} êtes amis</div>
+    <div class="friend-container">
+        <div class="flex-row space-between" *ngFor="let friend of friends">
+            <button class="image-container" (click)="refreshDialog(friend)">
+                <app-avatar-image [avatar]="friend.avatar"></app-avatar-image>
+            </button>
+            <p>{{ friend.username }}</p>
+        </div>
+        <div *ngIf="friends.length < 1 && !isFriend" class="center empty-list">{{ user.username }} n'a pas encore d'amis</div>
+    </div>
+</div>

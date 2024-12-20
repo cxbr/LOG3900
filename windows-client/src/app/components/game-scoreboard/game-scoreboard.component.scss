@@ -1,0 +1,78 @@
+.infos-container {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    height: 30vh;
+    width: 15vw;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border: solid;
+    border-radius: 2vh;
+    text-align: left;
+}
+
+.title {
+    margin-top: 3vh;
+    margin-bottom: 3vh !important;
+}
+
+.info {
+    margin-top: -0.1vh;
+}
+
+.data {
+    margin-top: -3vh;
+    margin-bottom: 3vh;
+}
+
+.scoreboard {
+    height: 15vh;
+    padding: 1vh;
+    border: solid;
+    border-radius: 1vw;
+    box-shadow: 2px 6px 9px 2px rgb(0 0 0 / 20%);
+    background-color: whitesmoke;
+    margin-bottom: 1vh;
+}
+
+.player {
+    margin: 1vh 2vw 1vh 2vw;
+    gap: 1vh;
+    font-size: 3vh;
+}
+
+.divider {
+    border: solid 1px;
+    height: 8vh;
+}
+
+.timer {
+    height: 6vh;
+    width: 9vw;
+    padding: 1vh;
+    border: solid;
+    border-radius: 1vw;
+    box-shadow: 2px 6px 9px 2px rgb(0 0 0 / 20%);
+    background-color: whitesmoke;
+}
+
+.time {
+    justify-content: space-around;
+    width: 8vw;
+    height: 3vh;
+    font-size: 3vh;
+}
+
+.replayClass {
+    left: 67vw;
+    top: -15vh;
+}
+
+.cheat {
+    margin-left: 4.5vw;
+}
+
+.client {
+    scale: 0.9;
+    margin-top: -0.1vh;
+}

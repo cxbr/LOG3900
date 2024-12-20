@@ -1,0 +1,30 @@
+<div class="flex-row center space-between scroll info-container" *ngFor="let user of filteredUsers">
+    <button class="image-container" (click)="openProfileDialog(user)">
+        <app-avatar-image [avatar]="user.avatar" diameter="13vh"></app-avatar-image>
+    </button>
+    <app-username [username]="user.username" [isShowAvatar]="false"></app-username>
+    <button *ngIf="user.state === 'isStranger'" class="round-button" (click)="sendFriendRequest(user._id)">
+        <span class="material-icons">person_add</span>
+    </button>
+    <button *ngIf="user.state === 'isFriend'" class="round-button" (click)="removeFriend(user._id)">
+        <span class="material-icons">person_remove</span>
+    </button>
+    <div *ngIf="user.state === 'requestSent'">En attente</div>
+    <div *ngIf="user.state === 'requestReceived'" class="flex-row space-between button-container">
+        <button class="round-button" (click)="acceptFriendRequest(user._id)">
+            <span class="material-icons">check</span>
+        </button>
+        <button class="round-button" (click)="declineFriendRequest(user._id)">
+            <span class="material-icons">close</span>
+        </button>
+    </div>
+    <div *ngIf="user.state === 'requestUnseen'" class="flex-row space-between button-container">
+        <div class="indicator"></div>
+        <button class="round-button" (click)="acceptFriendRequest(user._id)">
+            <span class="material-icons">check</span>
+        </button>
+        <button class="round-button" (click)="declineFriendRequest(user._id)">
+            <span class="material-icons">close</span>
+        </button>
+    </div>
+</div>

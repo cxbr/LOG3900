@@ -1,0 +1,59 @@
+<div class="flex-column center tab">
+    <div class="flex-row">
+        <app-avatar [isEditable]="true" [sendRightAway]="true" initialRoute="/config"></app-avatar>
+        <div class="flex-column">
+            <div class="flex-row">
+                <div class="input-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nom d'utilisateur</mat-label>
+                        <input
+                            matInput
+                            type="text"
+                            #usernameInput
+                            [style.color]="usernameColor"
+                            [style.border-color]="'black'"
+                            value="{{ this.username }}"
+                            (input)="updateModifiedUsername(usernameInput.value)"
+                        />
+                    </mat-form-field>
+                </div>
+                <button
+                    class="update"
+                    (click)="updateUsername()"
+                    [disabled]="isUpdateUsernameButtonDisabled"
+                    [class.disabled]="isUpdateUsernameButtonDisabled"
+                >
+                    <span class="material-icons icon"> save </span>
+                </button>
+            </div>
+            <div class="flex-row">
+                <div class="input-container"></div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Couleur du nom d'utilisateur</mat-label>
+                    <input
+                        class="color-picker-input"
+                        matInput
+                        type="color"
+                        #colorPicker
+                        [(ngModel)]="usernameColor"
+                        (input)="updateModifiedColor(colorPicker.value)"
+                    />
+                </mat-form-field>
+                <button
+                    class="update"
+                    (click)="updateUsernameColor(usernameColor)"
+                    [disabled]="isUpdateColorButtonDisabled"
+                    [class.disabled]="isUpdateColorButtonDisabled"
+                >
+                    <span class="material-icons icon"> save </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="center toggle-container">
+        <div class="flex-row space-around toggle-group">
+            <p>Thème sombre</p>
+            <mat-slide-toggle color="accent" [checked]="isToggled" (change)="toggleDarkTheme()"></mat-slide-toggle>
+        </div>
+    </div>
+</div>

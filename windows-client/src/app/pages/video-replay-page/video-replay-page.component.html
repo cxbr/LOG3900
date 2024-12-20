@@ -1,0 +1,53 @@
+<div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <body>
+        <header>
+            <div>
+                <button class="left" routerLink="/home">Retour <span class="material-icons"> home </span></button>
+                <app-chat-button></app-chat-button>
+            </div>
+            <div class="page-title">
+                <p>Reprise vidéo</p>
+            </div>
+        </header>
+
+        <mat-tab-group (selectedTabChange)="onTabChange($event)" color="primary" class="center">
+            <mat-tab label="Reprises globales">
+                <div class="center">
+                    <input class="search-bar" type="text" placeholder="Filtrer" [(ngModel)]="searchText" (input)="filterPublicReplays()" />
+                </div>
+                <ngx-slick-carousel *ngIf="selectedTabIndex === 0 && resetKey" class="carousel" [config]="slickConfig">
+                    <div ngxSlickItem *ngFor="let replay of publicFilteredReplays; trackBy: trackByReplay" class="slide">
+                        <app-video-replay-card
+                            (changeVisibilityNotify)="changeVisibility($event)"
+                            (deleteNotify)="deleteReplay($event)"
+                            [isOwnReplay]="isOwnReplay(replay.creator)"
+                            [replay]="replay"
+                        ></app-video-replay-card>
+                    </div>
+                </ngx-slick-carousel>
+                <p *ngIf="publicFilteredReplays.length === 0 && !noReplays">Aucun résultat trouvé !</p>
+                <p *ngIf="noReplays">Aucune reprise sauvegardée !</p>
+            </mat-tab>
+            <mat-tab label="Mes reprises">
+                <div class="center">
+                    <input class="search-bar" type="text" placeholder="Filtrer" [(ngModel)]="searchText" (input)="filterPrivateReplays()" />
+                </div>
+                <ngx-slick-carousel *ngIf="selectedTabIndex === 1 && privateResetKey" class="carousel" [config]="slickConfig">
+                    <div ngxSlickItem *ngFor="let replay of privateFilteredReplays; trackBy: trackByReplay" class="slide">
+                        <app-video-replay-card
+                            [isOwnReplay]="isOwnReplay(replay.creator)"
+                            (changeVisibilityNotify)="changeVisibility($event)"
+                            (deleteNotify)="deleteReplay($event)"
+                            [replay]="replay"
+                        ></app-video-replay-card>
+                    </div>
+                </ngx-slick-carousel>
+                <p *ngIf="privateFilteredReplays.length === 0 && privateReplays.length !== 0">Aucun résultat trouvé !</p>
+                <p *ngIf="privateReplays.length === 0">Aucune reprise sauvegardée !</p>
+                <button class="button" (click)="deleteUserReplays()" *ngIf="privateReplays.length !== 0">Supprimer toutes mes reprises</button>
+            </mat-tab>
+        </mat-tab-group>
+    </body>
+</div>

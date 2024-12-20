@@ -1,0 +1,48 @@
+.main-header {
+    height: 60vh;
+}
+
+.home-section {
+    height: 20vh;
+    gap: 100px;
+}
+
+.footer {
+    margin: 10vh 15vh 0vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.team {
+    justify-content: space-evenly;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    gap: 5%;
+    white-space: nowrap;
+}
+
+.custom-dialog-container .mat-dialog-container {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.gestion {
+    position: absolute;
+    top: 8%;
+    right: 0;
+    margin: 2vw;
+    padding: 1.5vh 1.5vw 1.5vh 3vh;
+    width: 7vw;
+    height: 7vh;
+}
+
+.replay {
+    position: absolute;
+    top: 16%;
+    right: 0;
+    margin: 2vw;
+    padding: 1.5vh 1.5vw 1.5vh 3vh;
+    width: 7vw;
+    height: 7vh;
+}

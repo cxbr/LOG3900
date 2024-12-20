@@ -1,0 +1,4 @@
+<!-- res/values/colors.xml -->
+<resources>
+    <color name="launch_background_color">#FFFEDAC2</color>
+</resources>

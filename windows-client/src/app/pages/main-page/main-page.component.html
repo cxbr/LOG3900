@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<body>
+    <header class="main-header">
+        <div>
+            <button class="left" (click)="logout()">Déconnexion<span class="material-icons"> logout </span></button>
+        </div>
+        <div>
+            <app-chat-button></app-chat-button>
+        </div>
+        <div><app-friend-button></app-friend-button></div>
+        <div><img class="logo" src="./assets/pictures/logo.png" /></div>
+        <div>
+            <button class="right" routerLink="/config">Profil <span class="material-icons"> face </span></button>
+        </div>
+        <div>
+            <button class="right gestion" (click)="openGameManagement()"><span class="material-icons icon"> draw </span></button>
+        </div>
+        <div>
+            <button class="right replay" routerLink="/video-replay"><span class="material-icons icon"> video_library </span></button>
+        </div>
+    </header>
+
+    <section class="flex-row center home-section">
+        <button (click)="setGameMode('mode Classique')">Mode Classique <span class="material-icons"> search </span></button>
+        <button (click)="setGameMode('mode Temps Limité')">Mode Temps Limité <span class="material-icons"> timer </span></button>
+    </section>
+
+    <footer class="footer">
+        <p>Équipe 101</p>
+        <div class="team flex-row center">
+            <span>Younes Benabbou</span>
+            <span>Ahmed Ben Rhouma</span>
+            <span>Ibrahim Boulahchiche</span>
+            <span>Coralie Brodeur</span>
+            <span>Juliette Legault</span>
+            <span>Dumitru Zlotea</span>
+        </div>
+    </footer>
+</body>

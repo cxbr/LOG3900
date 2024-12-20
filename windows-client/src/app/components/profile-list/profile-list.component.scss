@@ -1,0 +1,30 @@
+.image-container {
+    width: 13vh;
+    height: 13vh;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    width: 15vw;
+}
+
+.info-container {
+    background-color: whitesmoke;
+    border: solid;
+    border-radius: 1vh;
+    margin: 2vh 0vw;
+    padding: 0.5vh 2vw;
+}
+
+.indicator {
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: #fa959b;
+}

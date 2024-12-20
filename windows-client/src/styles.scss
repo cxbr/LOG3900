@@ -1,0 +1,357 @@
+@use '@angular/material' as mat;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+:root {
+    --primary-color: #fedac2;
+    --accent-color: #fa959b;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 1.8vh;
+    background-color: var(--primary-color);
+    align-items: center;
+    text-align: center;
+    user-select: none;
+}
+
+/* Box styles */
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.space-around {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page styles */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-title {
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+.title {
+    text-align: center;
+    font-size: x-large;
+    margin-bottom: 5vh;
+}
+
+.logo {
+    width: 40vh;
+    border-radius: 5vw;
+}
+
+/* Button styles */
+button {
+    display: flex;
+    font-weight: 600;
+    font-size: 1.5vh;
+    letter-spacing: 0.1vw;
+    padding: 2vh 6vh;
+    background-color: white;
+    border-radius: 2vw;
+    border: solid;
+    cursor: pointer;
+
+    transition: all 0.5s ease;
+    &:hover {
+        transform: scale(0.9);
+        background-color: var(--accent-color);
+    }
+}
+
+button:hover .material-icons {
+    opacity: 1;
+}
+
+.important-button {
+    background-color: #fa959b;
+}
+
+.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2vw;
+}
+
+.left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 2vw;
+}
+
+.right-dialog {
+    position: absolute;
+    right: 0;
+    margin: 2vw;
+    margin-right: 15vw;
+}
+
+.left-dialog {
+    position: absolute;
+    margin: 2vw;
+}
+
+.material-icons {
+    position: absolute;
+    top: 50%;
+    right: 11%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.icon {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    transition: none;
+    scale: 1.6;
+    margin-left: 1vw;
+    margin-top: 0.9vh;
+}
+
+button:hover .material-icons {
+    opacity: 1;
+}
+
+.square-button {
+    width: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+button.square-button .material-icons {
+    position: static;
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.round-button {
+    width: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+button.round-button .material-icons {
+    position: static;
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+span.mat-slide-toggle-bar.mat-slide-toggle-bar-no-side-margin {
+    scale: 1.5;
+}
+
+input {
+    display: flex;
+    width: 20vw;
+    font-weight: 600;
+    font-size: 1.5vh;
+    letter-spacing: 0.1vw;
+    padding: 2vh 6vh;
+    background-color: white;
+    border-radius: 2vw;
+    border: solid;
+    cursor: pointer;
+}
+
+/* Carousel styles: */
+.carousel {
+    width: 80vw;
+    margin-top: 10vh;
+}
+
+.slide {
+    margin-bottom: 1vh;
+}
+
+.slick-prev.slick-arrow {
+    position: fixed;
+    left: 2%;
+    right: auto;
+    margin-top: 5%;
+}
+
+.slick-next.slick-arrow {
+    position: fixed;
+    left: auto;
+    right: 2%;
+    margin-top: 5%;
+}
+
+.slick-prev.slick-arrow:before,
+.slick-next.slick-arrow:before {
+    color: #000000;
+    opacity: 1;
+}
+
+.slick-dots {
+    left: -0.3vw;
+}
+
+/* Modal styles */
+.custom-modal {
+    mat-dialog-container {
+        background-color: #fedac2;
+        border: solid;
+        overflow-y: scroll;
+    }
+
+    mat-dialog-container::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    mat-dialog-container::-webkit-scrollbar-thumb {
+        background-color: #b3b3b3;
+        border-radius: 5px;
+    }
+
+    mat-dialog-container::-webkit-scrollbar-thumb:hover {
+        background-color: #828282;
+    }
+}
+
+div::-webkit-scrollbar {
+    width: 10px;
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3;
+    border-radius: 5px;
+}
+
+div::-webkit-scrollbar-thumb:hover {
+    background-color: #828282;
+}
+
+/* Inputs styles */
+.mat-form-field-appearance-fill .mat-form-field-infix input {
+    width: 27vw;
+    padding: 0 0 0 1vw;
+    margin-top: 1.5vh;
+    height: 5vh;
+    background-color: white;
+    border-radius: 2vw;
+    border: solid;
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 30vw;
+    height: 15vh;
+    scale: 1.1;
+}
+
+.mat-form-field-appearance-fill.mat-focused .mat-form-field-label {
+    color: black;
+}
+
+.mat-form-field-appearance-fill.mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: black;
+}
+
+.mat-form-field-label {
+    color: black;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    content: none !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-ripple {
+    background-color: transparent !important;
+}
+
+input:disabled {
+    border-color: #1010104d;
+}
+
+input:disabled::placeholder {
+    color: #1010104d;
+}
+
+/* Theme */
+.dark-theme {
+    /* Modify CSS variables for dark theme */
+    --primary-color: #262626;
+    --accent-color: #fa959b;
+
+    /* Additional styles specific to dark theme */
+    background-color: #262626;
+    color: #fff;
+
+    .mat-form-field-label {
+        color: white;
+    }
+
+    .mat-form-field-appearance-fill.mat-focused .mat-form-field-label {
+        color: white;
+    }
+
+    .mat-form-field-appearance-fill.mat-focused .mat-form-field-label {
+        color: white;
+    }
+
+    .mat-tab-label {
+        color: white;
+    }
+
+    mat-dialog-container {
+        background-color: #262626;
+        color: white;
+        border: none;
+    }
+
+    .white {
+        color: white;
+    }
+
+    input,
+    div .black {
+        color: black;
+    }
+}
+
+/* Tabs */
+.mat-ink-bar {
+    background-color: var(--accent-color) !important;
+}

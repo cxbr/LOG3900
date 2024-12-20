@@ -1,0 +1,25 @@
+.modal {
+    width: 50vw;
+}
+
+.image-container {
+    padding: 0vh;
+
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    padding: 3vh;
+}
+
+.file-input {
+    display: none;
+}

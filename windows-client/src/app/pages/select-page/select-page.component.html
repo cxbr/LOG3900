@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<body>
+    <header>
+        <div>
+            <button class="left" routerLink="/home">Retour <span class="material-icons"> home </span></button>
+            <app-chat-button></app-chat-button>
+        </div>
+        <div class="page-title"><p>Sélection</p></div>
+    </header>
+
+    <mat-tab-group color="primary" class="center">
+        <mat-tab label="Choix de jeu">
+            <ngx-slick-carousel class="carousel" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                    <app-game-card [slide]="slide" [page]="pageType" (notifySelected)="setSelected($event)"></app-game-card>
+                </div>
+                <p *ngIf="this.slides.length === 0">Aucun jeu sauvegardé !</p>
+            </ngx-slick-carousel>
+        </mat-tab>
+    </mat-tab-group>
+</body>

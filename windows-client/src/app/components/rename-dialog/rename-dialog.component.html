@@ -1,0 +1,9 @@
+<div class="dialog">
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Renommer la carte</mat-label>
+            <input matInput formControlName="newName" type="text" [(ngModel)]="newName" (keyup.enter)="onEnter()" />
+        </mat-form-field>
+    </form>
+    <button [mat-dialog-close]="newName">Entrer</button>
+</div>

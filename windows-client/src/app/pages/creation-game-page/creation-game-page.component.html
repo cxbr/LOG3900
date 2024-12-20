@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<body (mouseup)="handleMouseUp()">
+    <header>
+        <div class="left">
+            <button class routerLink="/game-management">Retour <span class="material-icons"> home </span></button>
+        </div>
+        <app-chat-button></app-chat-button>
+        <div><p class="page-title">Création de jeu</p></div>
+    </header>
+
+    <div class="group-options">
+        <button (click)="images1et2.click()">
+            <div>Ajouter une image commune en arrière plan</div>
+            <span class="material-icons"> add_photo_alternate </span>
+        </button>
+        <input #images1et2 type="file" class="display-none" accept="image/bmp" (input)="verifyImageFormat($event, images1et2)" />
+        <button (click)="reset(images1et2)">
+            <div>Supprimer l'image commune en arrière plan</div>
+            <span class="material-icons"> delete </span>
+        </button>
+    </div>
+
+    <section class="canvas">
+        <div>
+            <div class="group-options">
+                <button (click)="image1.click()">
+                    <div>Ajouter une image en arrière plan</div>
+                    <span class="material-icons"> add_photo_alternate </span>
+                </button>
+                <input #image1 type="file" class="display-none" accept="image/bmp" (input)="verifyImageFormat($event, image1)" />
+                <button (click)="reset(image1)">
+                    <div>Supprimer l'image en arrière plan</div>
+                    <span class="material-icons"> image_not_supported </span>
+                </button>
+            </div>
+            <canvas
+                #canvas1
+                (mousedown)="handleCanvasEvent('mousedown', $event, canvas1)"
+                (mousemove)="handleCanvasEvent('mousemove', $event, canvas1)"
+                (mouseup)="handleCanvasEvent('mouseup', $event, canvas1)"
+                (mouseleave)="handleCanvasEvent('mouseleave', $event, canvas1)"
+                (mouseenter)="handleCanvasEvent('mouseenter', $event, canvas1)"
+                [attr.width]="width"
+                [attr.height]="height"
+            ></canvas>
+            <button class="reset-drawing" (click)="reset(canvas1)">
+                <div>Réinitialiser l'avant-plan</div>
+                <span class="material-icons"> delete </span>
+            </button>
+        </div>
+
+        <div class="swap">
+            <button (click)="duplicateForeground(canvas1)">
+                <span class="material-icons options">arrow_forward</span>
+            </button>
+            <button (click)="invertForegrounds()">
+                <span class="material-icons options"> swap_horiz </span>
+            </button>
+            <button (click)="duplicateForeground(canvas2)">
+                <span class="material-icons options"> arrow_back </span>
+            </button>
+        </div>
+
+        <div>
+            <div class="group-options">
+                <button (click)="image2.click()">
+                    <div>Ajouter une image en arrière plan</div>
+                    <span class="material-icons"> add_photo_alternate </span>
+                </button>
+                <input #image2 type="file" class="display-none" accept="image/bmp" (input)="verifyImageFormat($event, image2)" />
+                <button (click)="reset(image2)">
+                    <div>Supprimer l'image en arrière plan</div>
+                    <span class="material-icons"> image_not_supported </span>
+                </button>
+            </div>
+            <canvas
+                #canvas2
+                (mousedown)="handleCanvasEvent('mousedown', $event, canvas2)"
+                (mousemove)="handleCanvasEvent('mousemove', $event, canvas2)"
+                (mouseup)="handleCanvasEvent('mouseup', $event, canvas2)"
+                (mouseleave)="handleCanvasEvent('mouseleave', $event, canvas2)"
+                (mouseenter)="handleCanvasEvent('mouseenter', $event, canvas2)"
+                [attr.width]="width"
+                [attr.height]="height"
+            ></canvas>
+            <button class="reset-drawing" (click)="reset(canvas2)">
+                <div>Réinitialiser l'avant-plan</div>
+                <span class="material-icons"> delete </span>
+            </button>
+        </div>
+    </section>
+
+    <div>
+        <div class="pickers" *ngIf="showColorPicker || showPencilThicknessPicker || showEraserThicknessPicker">
+            <div *ngIf="showColorPicker">Couleur</div>
+            <input *ngIf="showColorPicker" #colorPicker type="color" [value]="color" [(ngModel)]="color" class="color-picker" />
+            <div *ngIf="showPencilThicknessPicker">Largeur - {{ pencilSize }} px</div>
+            <mat-slider *ngIf="showPencilThicknessPicker" thumbLabel id="pencilSize" min="1" max="100" step="1" [(ngModel)]="pencilSize">
+                <input matSliderThumb />
+            </mat-slider>
+            <div *ngIf="showEraserThicknessPicker">
+                <p for="eraserSize">Largeur - {{ eraserSize }} px</p>
+                <mat-slider thumbLabel id="eraserSize" min="1" max="100" step="1" [(ngModel)]="eraserSize">
+                    <input matSliderThumb />
+                </mat-slider>
+            </div>
+        </div>
+
+        <div class="group-options">
+            <button #pen (click)="enableMode('pencil')"><span class="material-icons options"> edit </span></button>
+            <button #rectangle (click)="enableMode('rectangle')"><span class="material-icons options"> rectangle </span></button>
+            <button #ellipse (click)="enableMode('ellipse')">
+                <span class="material-icons options" style="transform: scaleX(1.5)"> circle </span>
+            </button>
+            <button #eraser (click)="enableMode('eraser')"><span class="material-symbols-outlined options"> ink_eraser </span></button>
+            <div class="flex-row arrow-container">
+                <button class="undo-redo-button" title="Undo" (click)="undo()"><span class="material-icons options"> undo </span></button>
+                <button title="Redo" (click)="redo()"><span class="material-icons options"> redo </span></button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <button class="no-hover">
+            Rayon pour les différences
+            <select #radiusInput [(ngModel)]="radius">
+                <option *ngFor="let radius of possibleRadius" [value]="radius">{{ radius }}</option>
+            </select>
+        </button>
+        <button
+            *ngIf="(image1?.value !== '' && image2?.value !== '') || images1et2?.value !== '' || this.previousForegroundStates.length > 0"
+            (click)="runDetectionSystem()"
+        >
+            Visualiser les différences
+            <span class="material-icons"> search </span>
+        </button>
+    </footer>
+</body>

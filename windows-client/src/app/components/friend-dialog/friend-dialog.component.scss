@@ -1,0 +1,24 @@
+.dialog {
+    margin: 3vh;
+}
+
+.user-container {
+    text-align: left;
+    width: 40vw;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.empty-list-message {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff82;
+    border-radius: 1vh;
+    height: 5vh;
+    padding: 2vh;
+    text-align: center;
+}
+
+.input-container {
+    margin: 2vh 0vh;
+}

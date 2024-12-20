@@ -1,0 +1,13 @@
+<div>
+    <div class="star-rating-container">
+        <p>Avez-vous aimé ce jeu ?</p>
+        <app-star-rating [rating]="userRating" (ratingChange)="onRatingChange($event)"></app-star-rating>
+    </div>
+    <div class="flex-column center">
+        <p>Voulez-vous envoyer votre évaluation ?</p>
+        <div class="flex-row">
+            <button (click)="sendRatingToServer(); navigateToHome()">Oui</button>
+            <button (click)="navigateToHome()">Non</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="avatar-container">
+    <p>Avatar</p>
+    <div #avatarContainer class="image-container"><img #image [src]="avatar" /></div>
+    <button *ngIf="isEditable" class="square-button edit-button" (click)="openAvatarModal()">
+        <span class="material-icons"> add_a_photo </span>
+    </button>
+    <mat-error *ngIf="isMatError">Avatar requis </mat-error>
+</div>

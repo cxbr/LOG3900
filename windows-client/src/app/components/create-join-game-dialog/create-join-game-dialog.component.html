@@ -1,0 +1,48 @@
+<div class="dialog">
+    <button class="right-dialog" (click)="createGame()">Créer une partie</button>
+    <app-chat-button></app-chat-button>
+
+    <div *ngIf="games.length === 0" class="flex-column center empty-message">
+        <span>Aucune partie en cours.</span>
+        <span>Cliquez sur "Créer une partie" pour commencer.</span>
+    </div>
+
+    <div class="board black" *ngFor="let game of games">
+        <div class="card flex-row center">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Liste de joueurs</th>
+                    <th>Joueurs en attente</th>
+                    <th *ngIf="game.started">Joueurs Observant la partie</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Partie de {{ game.userGame.creator }}</th>
+                    <th>
+                        <p *ngFor="let player of game.userGame.currentPlayers">
+                            <app-username [username]="player.username" [isShowAvatar]="true"></app-username>
+                        </p>
+                    </th>
+                    <th>
+                        <p *ngFor="let player of game.userGame.potentialPlayers">
+                            <app-username [username]="player.username" [isShowAvatar]="true"></app-username>
+                        </p>
+                    </th>
+                    <th *ngIf="game.started">
+                        <p *ngFor="let player of game.userGame.observers">
+                            <app-username [username]="player.username" [isShowAvatar]="true"></app-username>
+                        </p>
+                    </th>
+                    <th>
+                        <button class="temp" *ngIf="!game.started && game.userGame.currentPlayers.length < 4" (click)="joinGame(game.roomId)">
+                            Joindre
+                        </button>
+                        <button class="temp" *ngIf="!game.started && game.userGame.currentPlayers.length >= 4">Complet</button>
+                        <button class="temp" *ngIf="game.started" (click)="observeGame(game.roomId)">Observer</button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+.main-container {
+    height: 60vh;
+    width: 35vw;
+    padding: 2vw;
+    border: solid;
+    border-radius: 3vh;
+}
+
+.board {
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.card {
+    background-color: white;
+    border: solid;
+    border-radius: 1vh;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+.game-time {
+    margin-left: 1vw;
+}
+
+.text-bold {
+    font-weight: bold;
+    color: salmon;
+}
+
+.crossed-out {
+    text-decoration: line-through;
+    color: lightgrey;
+}
+
+tr {
+    width: 15vw;
+}
+
+.divider {
+    border: solid 1px;
+    height: 3vh;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10vw;
+}
+
+button {
+    position: absolute;
+    margin-top: -1.5%;
+    margin-left: 27%;
+    padding: 1vh 3vh;
+}
+
+.material-icons {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    transition: none;
+}

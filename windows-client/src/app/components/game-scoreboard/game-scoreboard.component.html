@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<div class="infos-container flex-column center black" [ngClass]="{ replayClass: isReplay }">
+    <div class="title flex-row center">Informations&nbsp;<span class="material-icons icon info"> info </span></div>
+    <div>
+        <p><b>Nom du jeu : </b> {{ this.gameName }}</p>
+        <p><b>Mode : </b> {{ this.gameRoom.gameMode }}</p>
+        <p><b>Nombre de différences :</b> {{ this.gameData.nbDifference }}</p>
+        <div *ngIf="this.gameRoom.gameConstants.cheatMode">
+            <p *ngIf="isCheatModeActive" class="material-icons icon cheat">visibility</p>
+            <p *ngIf="!isCheatModeActive" class="material-icons icon cheat">visibility_off</p>
+        </div>
+    </div>
+</div>
+
+<div class="flex-column center data black">
+    <div class="scoreboard flex-row center">
+        <mat-radio-group [(ngModel)]="selectedPlayer" (change)="onPlayerSelect()">
+            <mat-radio-button *ngIf="isObserver" [value]="null">Tous les joueurs</mat-radio-button>
+            <div class="players-list flex-row align-items-center" style="flex-wrap: wrap">
+                <div class="player flex-column center" *ngFor="let item of this.gameRoom.userGame.differenceFoundByPlayers">
+                    <div class="flex-row">
+                        <div *ngIf="isObserver" class="flex-row align-items-center">
+                            <mat-radio-button [value]="item.username"></mat-radio-button>
+                        </div>
+                        <div>
+                            <b><app-username [username]="item.username" [isShowAvatar]="true"></app-username></b>
+                        </div>
+                        <div>
+                            <span *ngIf="isAndroidByUsername(item.username); else windowsIcon" class="material-icons icon client">
+                                phone_android
+                            </span>
+                            <ng-template #windowsIcon>
+                                <span class="material-icons icon client"> desktop_windows </span>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div>{{ item.differencesFound }}</div>
+                </div>
+            </div>
+        </mat-radio-group>
+    </div>
+
+    <div class="timer flex-column center">
+        <div class="time flex-row center">
+            <p>{{ this.minutes | number: '2.0-0' }}</p>
+            <p>:</p>
+            <p>{{ this.seconds | number: '2.0-0' }}</p>
+        </div>
+    </div>
+</div>

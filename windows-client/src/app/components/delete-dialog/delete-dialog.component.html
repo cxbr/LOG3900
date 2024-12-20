@@ -1,0 +1,52 @@
+<div *ngIf="data.action === 'deleted'">
+    <p>Le créateur a annulé la partie</p>
+    <button (click)="close()">Ok</button>
+</div>
+
+<div *ngIf="data.action === 'delete'">
+    <p>Êtes-vous sûr de vouloir supprimer ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitSupp(true)">Oui</button>
+        <button (click)="emitSupp(false)">Non</button>
+    </div>
+</div>
+
+<div *ngIf="data.action === 'deleteAll'">
+    <p>Êtes-vous sûr de vouloir supprimer <b>tous</b> les jeux ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitSupp(true)">Oui</button>
+        <button (click)="emitSupp(false)">Non</button>
+    </div>
+</div>
+
+<div *ngIf="data.action === 'deleteHistory'">
+    <p>Êtes-vous sûr de vouloir supprimer <b>toutes</b> les parties ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitSupp(true)">Oui</button>
+        <button (click)="emitSupp(false)">Non</button>
+    </div>
+</div>
+
+<div *ngIf="data.action === 'reset'">
+    <p>Êtes-vous sûr de vouloir réinitialiser les meilleurs temps du jeu ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitSupp(true)">Oui</button>
+        <button (click)="emitSupp(false)">Non</button>
+    </div>
+</div>
+
+<div *ngIf="data.action === 'resetAll'">
+    <p>Êtes-vous sûr de vouloir réinitialiser <b>tous</b> les meilleurs temps ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitSupp(true)">Oui</button>
+        <button (click)="emitSupp(false)">Non</button>
+    </div>
+</div>
+
+<div *ngIf="data.action === 'changeAvatar'">
+    <p>Souhaitez-vous modifier votre avatar ?</p>
+    <div class="flex-row space-around">
+        <button (click)="emitSupp(true)">Oui</button>
+        <button (click)="emitSupp(false)">Non</button>
+    </div>
+</div>

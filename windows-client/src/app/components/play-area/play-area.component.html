@@ -1,0 +1,26 @@
+<div class="playarea-container">
+    <canvas
+        #canvas1
+        [class.disabled]="canvasDisabled"
+        (mousedown)="handleCanvasEvent('mousedown', $event, canvas1)"
+        (mousemove)="handleCanvasEvent('mousemove', $event, canvas1)"
+        (mouseup)="handleCanvasEvent('mouseup', $event, canvas1)"
+        (mouseleave)="handleCanvasEvent('mouseleave', $event, canvas1)"
+        (mouseenter)="handleCanvasEvent('mouseenter', $event, canvas1)"
+        (click)="mouseClickAttempt($event, canvas1)"
+        [attr.width]="width"
+        [attr.height]="height"
+    ></canvas>
+    <canvas
+        #canvas2
+        [class.disabled]="canvasDisabled"
+        (mousedown)="handleCanvasEvent('mousedown', $event, canvas2)"
+        (mousemove)="handleCanvasEvent('mousemove', $event, canvas2)"
+        (mouseup)="handleCanvasEvent('mouseup', $event, canvas2)"
+        (mouseleave)="handleCanvasEvent('mouseleave', $event, canvas2)"
+        (mouseenter)="handleCanvasEvent('mouseenter', $event, canvas2)"
+        (click)="mouseClickAttempt($event, canvas2)"
+        [attr.width]="width"
+        [attr.height]="height"
+    ></canvas>
+</div>

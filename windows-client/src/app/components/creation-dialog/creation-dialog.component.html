@@ -1,0 +1,24 @@
+<div class="flex-row center">
+    <canvas #canvasDifferences [attr.width]="width" [attr.height]="height"></canvas>
+    <div class="side-container flex-column">
+        <!-- <button (click)="exitDialog(undefined, undefined, undefined)" (keydown)="this.disableDefaultFocus($event)">Retour à l'édition</button> -->
+        <h1>Informations générales</h1>
+        <p>Nombre de différences trouvées : {{ data.nbDifferences }}</p>
+        <div [ngClass]="{ hidden: validDifferenceCount }" class="warning-message">Le jeu nécessite entre 3 et 9 différences.</div>
+        <input
+            type="text"
+            [(ngModel)]="inputValue"
+            maxlength="20"
+            placeholder="Nom du jeu"
+            [ngClass]="{ 'error-border': applyBorder }"
+            class="custom-border"
+            [disabled]="!validDifferenceCount"
+            (keydown.enter)="saveGame()"
+        />
+        <div class="flex-row">
+            <div>Je souhaite être mentionné(e) comme créateur(trice) du jeu</div>
+            <mat-slide-toggle color="accent" ngDefaultControl [(ngModel)]="wantShoutout"></mat-slide-toggle>
+        </div>
+        <button [disabled]="!validDifferenceCount" (click)="saveGame()">Sauvegarder le jeu</button>
+    </div>
+</div>

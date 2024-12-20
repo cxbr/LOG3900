@@ -1,0 +1,75 @@
+<body>
+    <header class="flex-column center">
+        <button *ngIf="!isReplayPage" class="right-dialog" (click)="reset(false)">Terminer</button>
+        <button *ngIf="!isReplayPage" class="left-dialog" (click)="reset(true)">Sauvegarder</button>
+        <div class="page-title">
+            <p>Reprise vidéo</p>
+        </div>
+    </header>
+    <div class="flex-column center replay-dialog">
+        <div class="data-container flex-row center">
+            <app-replay-game-scoreboard
+                [events]="this.events"
+                [states]="this.states"
+                [playSignal]="this.playSignal"
+                [pauseSignal]="this.pauseSignal"
+                [restartSignal]="this.restartSignal"
+                [progress]="this.progressChanged"
+                [nextActionSignal]="this.nextActionSignal"
+            ></app-replay-game-scoreboard>
+        </div>
+        <div class="canvas-container flex-row center">
+            <app-replay-play-area
+                class="play-area"
+                tabindex="0"
+                [events]="this.events"
+                [states]="this.states"
+                [playSignal]="this.playSignal"
+                [pauseSignal]="this.pauseSignal"
+                [restartSignal]="this.restartSignal"
+                [progress]="this.progressChanged"
+                [nextActionSignal]="this.nextActionSignal"
+                [playbackRate]="this.playbackRateChanged"
+            ></app-replay-play-area>
+        </div>
+    </div>
+    <div class="flex-column center">
+        <input
+            type="range"
+            class="progress-bar"
+            value="0"
+            min="0"
+            [max]="maxProgressValue"
+            [(ngModel)]="currentProgress"
+            (ngModelChange)="seekToProgress($event)"
+            (mousedown)="isChangingProgress = true"
+            (mouseup)="isChangingProgress = false"
+        />
+        <div class="video-controls flex-row center">
+            <button *ngIf="this.currentPlayState === allPlayStates.Paused" (click)="play()">
+                <span class="material-icons icons"> play_arrow </span>
+            </button>
+            <button *ngIf="this.currentPlayState === allPlayStates.Playing" (click)="pause()">
+                <span class="material-icons icons"> pause </span>
+            </button>
+            <button (click)="restart()">
+                <span class="material-icons icons"> replay </span>
+            </button>
+
+            <div class="speed">
+                <div class="speed-buttons">
+                    <button class="speed-button" (click)="setPlaybackRate(1)">
+                        <span>x1</span>
+                    </button>
+                    <button class="speed-button" (click)="setPlaybackRate(2)">
+                        <span>x2</span>
+                    </button>
+                    <button class="speed-button" (click)="setPlaybackRate(4)">
+                        <span>x4</span>
+                    </button>
+                </div>
+                <p class="speed-title">Vitesse</p>
+            </div>
+        </div>
+    </div>
+</body>

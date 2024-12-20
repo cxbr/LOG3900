@@ -1,0 +1,17 @@
+.horizontal-layout {
+    align-items: center;
+    padding: 0 8vh;
+    height: 5vh;
+    border-bottom: 2px solid #818181;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.horizontal-layout:hover {
+    background-color: var(--accent-color);
+}
+
+.icon {
+    scale: 0.9;
+}

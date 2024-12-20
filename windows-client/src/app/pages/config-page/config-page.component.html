@@ -1,0 +1,29 @@
+<div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <body>
+        <header>
+            <div>
+                <button class="left" routerLink="/home">Retour <span class="material-icons"> home </span></button>
+                <app-chat-button></app-chat-button>
+            </div>
+            <div class="page-title"><p>Profil</p></div>
+        </header>
+
+        <mat-tab-group color="primary" class="center">
+            <mat-tab label="Compte">
+                <app-account-tab></app-account-tab>
+            </mat-tab>
+            <mat-tab label="Historique">
+                <div class="history-section">
+                    <app-connection-history></app-connection-history>
+                    <app-game-history></app-game-history>
+                </div>
+            </mat-tab>
+            <mat-tab label="Statistiques">
+                <div class="history-section">
+                    <app-game-statistics></app-game-statistics>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </body>
+</div>

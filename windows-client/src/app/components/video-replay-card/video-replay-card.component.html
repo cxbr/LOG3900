@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<div class="main-container flex-row">
+    <div class="flex-column">
+        <div class="infos flex-column center">
+            <div class="title">
+                <b>{{ replay.snapshots[0].gameRoom.userGame.gameName }} </b>
+            </div>
+            <div><b>Créateur : </b><app-username [userId]="replay.creator"></app-username></div>
+            <div><b>Durée : </b>{{ replay.snapshots.length }} secondes</div>
+            <div class="flex-row center">
+                <div><span class="material-icons icon reaction">thumb_up</span>{{ nbLikes }}</div>
+                <div><span class="material-icons icon reaction">question_answer</span>{{ nbComments }}</div>
+            </div>
+        </div>
+
+        <div class="image-container flex-row center">
+            <img img src="{{ replay.snapshots[0].imageData1 }}" alt="Video" />
+        </div>
+
+        <div class="overlay center">
+            <div class="flex-column center">
+                <div class="toggle-container" *ngIf="isOwnReplay">
+                    <span class="switch-text">Privée</span>
+                    <mat-slide-toggle [checked]="replay.public"
+                        (change)="changeVideoAccessibility($event)"></mat-slide-toggle>
+                    <span class="switch-text">Publique</span>
+                </div>
+                <div class="flex-row center">
+                    <button class="button" (click)="openReplayDialog()">Visionner<span class="material-icons">
+                            smart_display </span></button>
+                    <button *ngIf="isOwnReplay" class="button" (click)="deleteReplay()">Supprimer<span
+                            class="material-icons"> delete </span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

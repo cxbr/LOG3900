@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<div class="main-container">
+    <div class="flex-row center">
+        <p class="title"><b> Historique des parties jouées </b></p>
+        <button (click)="deleteParties()"><span class="material-icons"> delete </span></button>
+    </div>
+
+    <div class="board flex-column">
+        <table>
+            <div class="card flex-row center black" *ngFor="let partie of parties; let i = index">
+                <div class="game-mode flex-column center">
+                    <tr>
+                        <b>{{ partie.gameMode }}</b>
+                        <div>{{ partie.startTime | date: 'yyyy-MM-dd HH:mm:ss' }}</div>
+                    </tr>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="flex-row center">
+                    <tr class="truncate">
+                        <span class="gameOutcome" *ngIf="isLimitedTimeModePlayed[i] && !isGameAbandoned[i]"> Partie jouée </span>
+                        <span class="gameOutcome" *ngIf="isGameWon[i] && !isLimitedTimeModePlayed[i] && !isGameAbandoned[i]"> Victoire ! </span>
+                        <span class="gameOutcome" *ngIf="isGameLost[i] && !isGameAbandoned[i]"> Défaite </span>
+                        <span class="gameOutcome" *ngIf="!isGameWon[i] && !isGameLost[i] && !isGameAbandoned[i] && !isLimitedTimeModePlayed[i]">
+                            Égalité
+                        </span>
+                        <span class="gameOutcome" *ngIf="isGameAbandoned[i]"> Abandon </span>
+                    </tr>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="game-time flex-row center">
+                    <tr>
+                        <div><b>Durée</b> : {{ calculateTime(partie.timer) }}</div>
+                    </tr>
+                </div>
+            </div>
+        </table>
+    </div>
+</div>

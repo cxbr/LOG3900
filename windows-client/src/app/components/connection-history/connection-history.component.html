@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<div class="main-container">
+    <div class="flex-row center">
+        <p class="title"><b> Journal des connexions </b></p>
+    </div>
+
+    <div class="board flex-column">
+        <table>
+            <div class="black card flex-row center" *ngFor="let connection of connections; let i = index">
+                <div class="game-mode flex-column center">
+                    <tr>
+                        <b>{{ connection.connectionType }}</b>
+                    </tr>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="game-time flex-row center">
+                    <tr>
+                        <div>{{ connection.connectionTime | date: 'yyyy-MM-dd HH:mm:ss' }}</div>
+                    </tr>
+                </div>
+            </div>
+        </table>
+    </div>
+</div>

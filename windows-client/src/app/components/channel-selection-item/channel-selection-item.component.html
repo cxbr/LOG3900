@@ -1,0 +1,6 @@
+<div class="horizontal-layout flex-row center" (click)="selectChannel()">
+    <p class="channel-name">{{ this.getChannelName() }}</p>
+    <span *ngIf="this.shouldCloseButtonBeVisible()" (click)="deleteChannel($event)" class="material-icons icon">
+        {{ this.getCloseButtonIcon() }}
+    </span>
+</div>

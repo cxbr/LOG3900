@@ -1,0 +1,55 @@
+.close-button {
+    background-color: transparent;
+    border: none;
+    margin-left: 19vw;
+}
+
+.chat-header {
+    background-color: whitesmoke;
+    padding: 1vw;
+    border-radius: 1.5vh;
+    border: solid black;
+    width: 19vw;
+    margin-left: -0.1vw;
+}
+
+.small-button-left {
+    margin-left: 10px;
+    margin-right: auto;
+    padding: 5px;
+}
+
+.small-button-right {
+    margin-right: 10px;
+    margin-left: auto;
+    padding: 5px;
+}
+
+.search-bar {
+    width: 60%;
+    margin-bottom: 5%;
+}
+
+.channel-selection-container {
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+button,
+button:hover,
+button:focus {
+    border: none;
+    background-color: transparent;
+}
+
+.detail,
+.detail:hover,
+.detail:focus {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+    transform: none !important;
+    // margin: 0 !important;
+    // padding: 0 !important;
+}

@@ -1,0 +1,27 @@
+<div class="flex-column center dialog black">
+    <div class="center white">Amis</div>
+    <div class="input-container">
+        <input type="text" placeholder="Filtrer" [(ngModel)]="filter" (input)="filterUsers()" />
+    </div>
+    <div class="user-container">
+        <p class="white">Nouvelles demandes d'amis</p>
+        <app-profile-list [users]="users" [filteredUsers]="unseenRequestUsers"></app-profile-list>
+        <div *ngIf="unseenRequestUsers.length < 1" class="empty-list-message">Les nouvelles demandes d'amis apparaîtront ici</div>
+
+        <p class="white">Demandes d'amis</p>
+        <app-profile-list [users]="users" [filteredUsers]="seenRequestUsers"></app-profile-list>
+        <div *ngIf="seenRequestUsers.length < 1" class="empty-list-message">Les demandes d'amis ignorées apparaîtront ici</div>
+
+        <p class="white">Demandes d'amis envoyées</p>
+        <app-profile-list [users]="users" [filteredUsers]="sentRequestUsers"></app-profile-list>
+        <div *ngIf="sentRequestUsers.length < 1" class="empty-list-message">Les demandes d'amis envoyées apparaîtront ici</div>
+
+        <p class="white">Amis</p>
+        <app-profile-list [users]="users" [filteredUsers]="friends"></app-profile-list>
+        <div *ngIf="friends.length < 1" class="empty-list-message">Aucun ami à afficher</div>
+
+        <p class="white">Vous connaissez peut-être ...</p>
+        <app-profile-list [users]="users" [filteredUsers]="strangers"></app-profile-list>
+        <div *ngIf="strangers.length < 1" class="empty-list-message">Aucune suggestion à afficher</div>
+    </div>
+</div>

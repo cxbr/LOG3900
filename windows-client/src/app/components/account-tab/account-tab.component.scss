@@ -1,0 +1,50 @@
+.tab {
+    padding-top: 5vh;
+    height: 60vh;
+    width: 80vw;
+}
+
+mat-form-field {
+    width: 15vw;
+}
+
+.input-container {
+    margin-left: 8vw;
+}
+
+.toggle-group {
+    width: 30vh;
+}
+
+.toggle-container {
+    padding: 10vh;
+}
+
+.color-picker-input {
+    margin-left: -1vw;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+input[type='color']::-webkit-color-swatch {
+    border-radius: 2vw;
+}
+
+.update {
+    scale: 0.3;
+    margin-top: -2vh;
+}
+
+.icon {
+    scale: 4;
+    margin-left: 0vw;
+    margin-top: 5.5vh;
+}
+
+button.update.disabled,
+button.update.disabled:hover {
+    transition: none;
+    animation: none;
+    cursor: default;
+    background-color: white;
+}

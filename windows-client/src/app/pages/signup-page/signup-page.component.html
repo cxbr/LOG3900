@@ -1,0 +1,47 @@
+<body>
+    <header>
+        <div>
+            <button class="right important-button" (click)="navigateToConnection()">Déjà inscrit ?</button>
+        </div>
+        <div><p class="page-title">Inscription</p></div>
+    </header>
+
+    <div class="flex-row">
+        <app-avatar class="avatar" #avatar [isEditable]="true" initialRoute="/signup"></app-avatar>
+        <div class="flex-column">
+            <form [formGroup]="signupForm" class="flex-column center" (keydown.enter)="onEnterKeyPressed()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Adresse courriel</mat-label>
+                    <input matInput type="email" formControlName="email" />
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="signupForm.get('email')!.hasError('required')"> Entrée requise </mat-error>
+                    <mat-error *ngIf="signupForm.get('email')!.hasError('strictEmail')"> Adresse courriel invalide </mat-error>
+                    <mat-error *ngIf="signupForm.get('email')!.hasError('emailTaken')">Cette adresse courriel est déjà utilisée</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nom d'utilisateur</mat-label>
+                    <input matInput type="text" formControlName="username" />
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="signupForm.get('username')!.hasError('required')"> Entrée requise </mat-error>
+                    <mat-error *ngIf="signupForm.get('username')!.hasError('usernameTaken')">Ce nom d'utilisateur est déjà pris</mat-error>
+                    <mat-error *ngIf="signupForm.get('username')!.hasError('vulgarName')">Nom trop vulgaire!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" formControlName="password" />
+                    <mat-icon matSuffix>lock</mat-icon>
+                    <mat-error *ngIf="signupForm.get('password')!.hasError('required')"> Entrée requise </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Confirmation de mot de passe</mat-label>
+                    <input matInput type="password" formControlName="passwordConf" />
+                    <mat-icon matSuffix>lock_outline</mat-icon>
+                    <mat-error *ngIf="signupForm.get('passwordConf')!.hasError('required')"> Entrée requise </mat-error>
+                    <mat-error *ngIf="signupForm.get('passwordConf')!.hasError('passwordMismatch')">Les mots de passe ne correspondent pas</mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+
+    <button class="signup" (click)="signUp()">S'inscrire</button>
+</body>

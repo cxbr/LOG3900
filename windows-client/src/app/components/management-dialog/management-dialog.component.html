@@ -1,0 +1,10 @@
+<div class="dialog">
+    <form [formGroup]="form" (keydown.enter)="onEnterKeyPressed()">
+        <mat-form-field>
+            <mat-label>Mot de passe</mat-label>
+            <input matInput formControlName="password" type="password" />
+            <mat-error *ngIf="form.get('password')?.hasError('wrongPassword')"> Mot de passe incorrect </mat-error>
+        </mat-form-field>
+    </form>
+    <button (click)="checkPassword()">Entrer</button>
+</div>

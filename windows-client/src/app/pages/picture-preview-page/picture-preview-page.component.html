@@ -1,0 +1,10 @@
+<div class="flex-column">
+    <button class="back-button" (click)="reopenCamera()">Reprendre une photo</button>
+    <button class="save-button" (click)="savePictureOnClick()">Ajouter la photo de profil</button>
+    <div class="flex-column center">
+        <p class="title">Aperçu</p>
+        <div class="image-container">
+            <img [src]="capturedImage" alt="Image" class="image" />
+        </div>
+    </div>
+</div>

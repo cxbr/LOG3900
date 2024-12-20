@@ -1,0 +1,61 @@
+.main-container {
+    justify-content: space-around;
+    width: 35vw;
+    padding: 2vw;
+    border: solid;
+    border-radius: 3vh;
+}
+
+.value {
+    padding: 1vh;
+}
+
+.const-input {
+    justify-content: space-around;
+    height: 30vh;
+    margin-right: 2vw;
+}
+
+.options {
+    margin-top: 5vh;
+    gap: 100px;
+}
+
+// RANGE SLIDER
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input[type='range'] {
+        -webkit-appearance: none;
+        overflow: hidden;
+        border-radius: 2vh;
+        width: 7vw;
+        cursor: pointer;
+        background-color: whitesmoke;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 1vw;
+        height: 1vh;
+        border-radius: 5vh;
+        background: #434343;
+        box-shadow: -5vw 0 0 8.17vh salmon;
+    }
+
+    input[type='range']::before {
+        display: flex;
+        margin-left: -1vw;
+        margin-top: -0.25vh;
+        color: black;
+        content: attr(min);
+        position: absolute;
+    }
+
+    input[type='range']::after {
+        color: black;
+        content: attr(max);
+        position: absolute;
+        display: flex;
+        margin-left: 7.5vw;
+        margin-top: -0.25vh;
+    }
+}

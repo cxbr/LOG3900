@@ -1,0 +1,22 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "./windows-client"
+        },
+        {
+            "path": "./android-client"
+        },
+        {
+            "path": "./server"
+        },
+        {
+            "path": "./common"
+        }
+    ],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "LOG3900-101"
+    }
+}

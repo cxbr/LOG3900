@@ -1,0 +1,6 @@
+<p *ngIf="data.isInvalidUsername">Veuillez entrer un nom d'utilisateur valide</p>
+<p *ngIf="data.isUsernameTaken">Ce nom est malheureusement déjà pris</p>
+<p *ngIf="data.isUsernameUpdated">Votre nom d'utilisateur a été changé avec succès</p>
+<div class="flex-row center">
+    <button (click)="closeDialog()">Ok</button>
+</div>

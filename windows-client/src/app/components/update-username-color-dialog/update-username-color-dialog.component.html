@@ -1,0 +1,5 @@
+<p *ngIf="data.isColorUpdated">La couleur de votre nom d'utilisateur a été changée avec succès</p>
+<p *ngIf="!data.isColorUpdated">Une erreur est survenue, veuillez réessayer</p>
+<div class="flex-row center">
+    <button (click)="closeDialog()">Ok</button>
+</div>

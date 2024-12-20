@@ -1,0 +1,29 @@
+.chat {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    margin: 2vw;
+    padding: 1.5vh 1.5vw 1.5vh 3vh;
+    width: 7vw;
+    height: 7vh;
+}
+
+.alert-notification {
+    background-color: orange;
+}
+
+.chat-icon {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    transition: none;
+    scale: 1.6;
+    margin-left: 1vw;
+    margin-top: 0.9vh;
+}
+
+.counter {
+    margin-left: 0.3vw;
+}

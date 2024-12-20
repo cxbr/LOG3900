@@ -1,0 +1,11 @@
+<div class="flex-column">
+    <button class="back-button" [routerLink]="initialRoute">Annuler</button>
+    <div class="flex-column center camera">
+        <div class="video-container center">
+            <video #video autoplay class="video"></video>
+        </div>
+        <button (click)="takePhoto()" class="capture-button round-button">
+            <span class="material-icons">photo_camera</span>
+        </button>
+    </div>
+</div>

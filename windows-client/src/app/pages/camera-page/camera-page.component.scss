@@ -1,0 +1,27 @@
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 2vw;
+}
+
+.camera {
+    padding-top: 15.6vh;
+}
+
+.video {
+    height: 60vh;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.capture-button {
+    margin-top: 3vh;
+}
+
+.video-container {
+    display: flex;
+    border: 0.8vw solid white;
+    border-radius: 3vw;
+    overflow: hidden;
+}

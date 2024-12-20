@@ -1,0 +1,58 @@
+.dialog {
+    width: 40vw;
+    height: 70vh;
+}
+
+.friend-container {
+    overflow-y: auto;
+    padding: 3vh;
+}
+
+.friend-message {
+    color:#e91e63ff;
+}
+
+.image-container {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    width: 13vw;
+}
+
+.empty-list {
+    height: 35vh;
+    align-content: center;
+}
+
+
+.indicator {
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background-color: #fa959b;
+}
+
+.friend-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.friend-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.friend-container::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+.friend-container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

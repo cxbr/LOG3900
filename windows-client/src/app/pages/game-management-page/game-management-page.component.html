@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<body>
+    <header>
+        <div>
+            <button class="left" routerLink="/home">Retour <span class="material-icons"> home </span></button>
+            <app-chat-button></app-chat-button>
+        </div>
+        <div class="page-title"><p>Gestion de jeux</p></div>
+        <div>
+            <button class="right" routerLink="/creation">Création de jeu <span class="material-icons"> edit </span></button>
+        </div>
+    </header>
+
+    <mat-tab-group color="primary" class="center">
+        <mat-tab label="Choix de jeu">
+            <ngx-slick-carousel class="carousel" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                    <app-game-card
+                        [slide]="slide"
+                        [page]="pageType"
+                        (deleteNotify)="deleteNotify($event)"
+                        (resetNotify)="resetNotify($event)"
+                        (renameNotify)="renameNotify($event)"
+                        (notifySelected)="setSelected($event)"
+                    ></app-game-card>
+                </div>
+                <p *ngIf="this.noGames">Aucun jeu sauvegardé !</p>
+            </ngx-slick-carousel>
+            <div *ngIf="!this.noGames" class="flex-row center">
+                <button (click)="deleteAllGames()">Supprimer tout<span class="material-icons"> delete </span></button>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</body>

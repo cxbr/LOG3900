@@ -1,0 +1,85 @@
+.chat-container {
+    width: 21vw;
+    height: 50vh;
+    margin-right: 2vw;
+    background-color: whitesmoke;
+    border-radius: 2vh;
+    border: solid;
+}
+
+.chat-header {
+    font-size: 2.5vh;
+    font-weight: bold;
+    margin-bottom: 3vh;
+}
+
+.chat-body {
+    flex: 1;
+    width: 20vw;
+    height: 35vh;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.message-container {
+    width: 16.5vw;
+    margin: 0.5vh;
+    padding: 1vh;
+    border-radius: 1vh;
+    border: solid 0.2vh;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+.sent-by-player-1 {
+    background-color: var(--accent-color);
+}
+
+.sent-by-player-2 {
+    background-color: #afd9f1;
+}
+
+.message-username {
+    font-style: italic;
+}
+
+.chat-footer {
+    margin-top: 1vh;
+    justify-content: space-between;
+}
+
+button {
+    padding: 1vh 3vh;
+    border-radius: 2vw;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.7vh;
+    letter-spacing: 0.1vw;
+}
+
+input {
+    width: 10vw;
+    border-radius: 2vw;
+    padding: 1.5vh 4vh;
+    font-weight: 600;
+    font-size: 1.5vh;
+}
+
+.error-border {
+    border: 2px solid red;
+}
+
+.material-icons {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    transition: none;
+}
+
+.date {
+    font-style: normal;
+    font-size: 1.2vh;
+}

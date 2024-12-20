@@ -1,0 +1,4 @@
+<button (click)="openFriendDialog()" class="friends {{ getIconClass() }}">
+    <span class="material-symbols-outlined friend-icon"> group </span>
+    <span *ngIf="notifCount > 0">&nbsp;({{ notifCount }})</span>
+</button>

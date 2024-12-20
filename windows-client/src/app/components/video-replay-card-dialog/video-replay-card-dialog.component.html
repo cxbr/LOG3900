@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<div class="flex-column center">
+    <app-video-replay-dialog></app-video-replay-dialog>
+    <div class="interactions flex-row center">
+        <button class="like-button" (click)="updateLikes()" [ngClass]="this.isReplayLiked ? 'replay-liked' : ''">
+            <span class="material-icons icon">thumb_up</span>
+            <span>{{ data.likes.length }}</span>
+        </button>
+        <div>
+            <div #commentsContainer class="comments-container">
+                <div *ngFor="let comment of comments">
+                    <div class="message-container" [ngClass]="comment.userId === this.userId ? 'sent-by-player-1' : 'sent-by-player-2'">
+                        <div>
+                            <div class="font-size message-username">
+                                <app-username #usernameComponent [userId]="comment.userId" (loadingChange)="scrollToBottom()"></app-username>
+                                <ng-container *ngIf="!usernameComponent.isLoading">
+                                    - <span class="date">{{ convertTimeToDate(comment.time) }}</span>
+                                    <div class="font-size">{{ comment.comment }}</div>
+                                </ng-container>
+                                <ng-container *ngIf="usernameComponent.isLoading"> Loading.... </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row center chat-footer">
+                <input
+                    #inputElement
+                    type="text"
+                    placeholder="Tapez un commentaire"
+                    maxlength="200"
+                    (keyup.enter)="sendComment()"
+                    [(ngModel)]="ownComment"
+                />
+                <button class="send" (click)="sendComment()"><span class="material-icons icon"> send </span></button>
+            </div>
+        </div>
+    </div>
+</div>

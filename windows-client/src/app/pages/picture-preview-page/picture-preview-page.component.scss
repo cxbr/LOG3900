@@ -1,0 +1,29 @@
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 2vw;
+}
+
+.save-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2vw;
+}
+
+.image {
+    height: 60vh;
+}
+
+.image-container {
+    width: 60vh;
+    height: 60vh;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

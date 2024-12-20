@@ -1,0 +1,38 @@
+canvas {
+    margin: 2% 5% 2% 0%;
+    border: solid;
+}
+
+.side-container {
+    align-items: center;
+}
+
+button {
+    margin: 3vh 0 3vh 0;
+}
+
+input {
+    padding: 1vh 2vh;
+    margin: 3vh 0 3vh 0;
+}
+
+p {
+    font-weight: 600;
+    font-size: 1.7vh;
+    letter-spacing: 0.1vw;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.warning-message {
+    font-weight: 600;
+    font-size: 1.7vh;
+    letter-spacing: 0.1vw;
+    color: red;
+}
+
+mat-slide-toggle {
+    margin-left: 1vw;
+}

@@ -1,0 +1,25 @@
+<body>
+    <header class="flex-row center">
+        <button class="left" (click)="abandonGame()">Abandonner</button>
+        <app-chat-button></app-chat-button>
+        <div class="flex-column">
+            <div class="page-title">Jeu</div>
+            <div *ngIf="nbObservers > 0">
+                <p>Observateurs en jeu : {{ nbObservers }}</p>
+                <p *ngIf="isObserver">Dessinez sur la fiche pour indiquer un indice au joueur choisi.
+                </p>
+            </div>
+        </div>
+    </header>
+    <div class="flex-column center">
+        <div class="data-container flex-row center">
+            <app-game-scoreboard [gameName]="gameName" [username]="username" [timer]="timer" [gameRoom]="gameRoom"
+                [gameData]="gameData" [penaltyTime]="penaltyTime" [isObserver]="isObserver"
+                (sendSelectedPlayer)="getSelectedPlayer($event)"></app-game-scoreboard>
+        </div>
+        <div class="canvas-container flex-row center">
+            <app-play-area class="play-area" tabindex="0" [gameRoom]="gameRoom" [color]="color"
+                [isObserver]="isObserver" (sendHint)="sendHint($event)"></app-play-area>
+        </div>
+    </div>
+</body>

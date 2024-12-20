@@ -1,0 +1,19 @@
+<div class="flex-column modal">
+    <!-- <div class="flex-row modal-header space-between"> -->
+    <!-- <button (click)="closeModal()">Annuler</button> -->
+    <div class="flex-row space-around">
+        <button (click)="openCamera()">Prendre une photo<span class="material-icons"> photo_camera </span></button>
+        <button (click)="fileInput.click()">Téléverser une photo<span class="material-icons"> file_upload </span></button>
+        <input #fileInput type="file" accept="image/*" class="file-input" (change)="onFileUpload($event)" />
+    </div>
+    <!-- </div> -->
+    <div class="grid">
+        <mat-grid-list cols="4" rowHeight="20vh" gutterSize="5vh">
+            <mat-grid-tile *ngFor="let path of predefinedAvatarPaths">
+                <button class="image-container" (click)="setAvatar(path)">
+                    <app-avatar-image [avatar]="path"></app-avatar-image>
+                </button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

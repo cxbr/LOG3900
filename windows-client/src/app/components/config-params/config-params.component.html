@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<div class="main-container flex-row center">
+    <div class="flex-column center">
+        <p class="title"><b> Constantes de jeu</b></p>
+        <div class="flex-row center">
+            <div class="const-input flex-column">
+                <div><b>Temps initial du compte à rebours</b></div>
+                <div><b>Temps de pénalité pour l’utilisation d’un indice</b></div>
+                <div><b>Temps bonus avec la découverte d’une différence</b></div>
+            </div>
+            <div class="const-input flex-column">
+                <div class="flex-column center">
+                    <div class="value">
+                        <b>{{ gameDuration }} secondes</b>
+                    </div>
+                    <input #rangeValue class="range-slider" type="range" [(ngModel)]="gameDuration" min="15" max="120" />
+                </div>
+                <div class="flex-column center">
+                    <div class="value">
+                        <b>{{ penaltyTime }} secondes</b>
+                    </div>
+                    <input #rangeValue class="range-slider" type="range" [(ngModel)]="penaltyTime" min="3" max="10" />
+                </div>
+                <div class="flex-column center">
+                    <div class="value">
+                        <b>{{ bonusTime }} secondes</b>
+                    </div>
+                    <input #rangeValue class="range-slider" type="range" [(ngModel)]="bonusTime" min="3" max="10" />
+                </div>
+            </div>
+        </div>
+        <div class="options flex-row">
+            <button class="flex-row center" (click)="applyNewConstants()">Sauvegarder<span class="material-icons"> save </span></button>
+            <button class="flex-row center" (click)="resetConstants()">Réinitialiser<span class="material-icons"> restart_alt </span></button>
+        </div>
+    </div>
+</div>

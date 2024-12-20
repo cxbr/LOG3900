@@ -1,0 +1,17 @@
+export enum GameModeEvents {
+    ValidateDifference = 'validate',
+    DifferenceValidated = 'validated',
+    EndGame = 'endGame',
+    GameFinished = 'GameFinished',
+    Abandoned = 'abandoned',
+    GameDeleted = 'gameDeleted',
+    GameDeletedFromDB = 'gameDeletedFromDB',
+    GameCanceled = 'gameCanceled',
+    Timer = 'timer',
+    ChangeTime = 'changeTime',
+    ObserverLeaveGame = 'observerLeaveGame',
+    NextGame = 'nextGame',
+    Hint = 'hint',
+    SendDifference = 'sendDifference',
+    CheatMode = 'cheatMode',
+}

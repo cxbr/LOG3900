@@ -1,0 +1,78 @@
+button {
+    scale: 0.7;
+}
+
+.group-options {
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    margin-top: 2vh;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3vw;
+}
+
+canvas {
+    border: solid #000000;
+}
+
+.swap {
+    margin-top: 23vh;
+}
+
+.display-none {
+    display: none;
+}
+
+.pickers {
+    position: absolute;
+    scale: 0.8;
+    width: 13vw;
+    height: 16vh;
+    top: 64vh;
+    right: 42.5vw;
+    background-color: white;
+    border: solid;
+    border-radius: 2vw;
+    padding: 1vh;
+}
+
+.color-picker {
+    border: none;
+    width: 13vw;
+    height: 8vh;
+}
+
+.undo-redo-button {
+    margin-right: -2vw;
+}
+
+.reset-drawing {
+    margin-left: 10vw;
+}
+
+.no-hover {
+    &:hover {
+        transform: scale(1);
+        background-color: white;
+        cursor: default;
+    }
+}
+
+.options {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    transition: none;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+}

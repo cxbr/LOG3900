@@ -1,0 +1,26 @@
+<body>
+    <header>
+        <div>
+            <button class="right important-button" routerLink="/signup">Pas de compte ?</button>
+        </div>
+        <div><img class="logo" src="./assets/pictures/logo.png" /></div>
+        <div><p class="page-title">Connexion</p></div>
+    </header>
+
+    <form [formGroup]="loginForm" class="flex-column center" (keydown.enter)="onEnterKeyPressed()">
+        <mat-form-field appearance="fill">
+            <mat-label>Nom d'utilisateur</mat-label>
+            <input matInput formControlName="username" type="text" (input)="clearErrors()" />
+            <mat-error *ngIf="loginForm.get('username')?.hasError('required')"> Entrée requise </mat-error>
+            <mat-error *ngIf="loginForm.get('username')?.hasError('usernameTaken')"> Utilisateur déjà connecté </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput formControlName="password" type="password" (input)="clearErrors()" />
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')"> Entrée requise </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('wrongPassword')"> Nom d'utilisateur ou mot de passe incorrect </mat-error>
+        </mat-form-field>
+    </form>
+    <button class="connection" (click)="connect()">Se connecter</button>
+    <button class="passwordRecup" routerLink="/password-recuperation">Mot de passe oublié ?</button>
+</body>

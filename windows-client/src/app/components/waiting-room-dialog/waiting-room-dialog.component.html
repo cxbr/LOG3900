@@ -1,0 +1,135 @@
+<div>
+    <header>
+        <button class="left-dialog" (click)="close()">Annuler</button>
+        <app-chat-button></app-chat-button>
+        <div
+            *ngIf="
+                waitingRoomService.gameRoom?.userGame?.creator === waitingRoomService?.username && waitingRoomService.gameMode === 'mode Classique'
+            "
+            class="page-title"
+        >
+            Création de partie du jeu {{ waitingRoomService.gameRoom.userGame.gameName }}
+        </div>
+        <p
+            *ngIf="
+                waitingRoomService.gameRoom?.userGame?.creator === waitingRoomService?.username && waitingRoomService.gameMode === 'mode Classique'
+            "
+        >
+            Mode Classique
+        </p>
+        <div
+            *ngIf="
+                waitingRoomService.gameRoom?.userGame?.creator === waitingRoomService?.username && waitingRoomService.gameMode === 'mode Temps Limité'
+            "
+            class="page-title"
+        >
+            Création de partie du jeu
+        </div>
+        <p
+            *ngIf="
+                waitingRoomService.gameRoom?.userGame?.creator === waitingRoomService?.username && waitingRoomService.gameMode === 'mode Temps Limité'
+            "
+        >
+            Mode Temps Limité
+        </p>
+        <div *ngIf="waitingRoomService.gameRoom?.userGame?.creator !== waitingRoomService?.username" class="page-title">
+            Attente de création de partie
+        </div>
+        <button
+            *ngIf="
+                waitingRoomService.gameRoom?.userGame?.creator === waitingRoomService?.username &&
+                (waitingRoomService.gameRoom?.userGame?.currentPlayers)!.length > 1
+            "
+            class="right-dialog"
+            (click)="start()"
+        >
+            Commencer
+        </button>
+    </header>
+
+    <!-- CREATOR -->
+    <div *ngIf="waitingRoomService.gameRoom?.userGame?.creator === waitingRoomService?.username" class="flex-column center">
+        <div class="flex-row center container">
+            <div class="flex-column main-container">
+                <p class="title"><b> Réglages de jeu</b></p>
+                <div class="flex-column center">
+                    <div class="const-input flex-row">
+                        <div class="label-container"><b>Temps de la partie (s)</b></div>
+                        <div class="setting-container flex-column center">
+                            <mat-slider thumbLabel class="range-slider" min="15" max="120" step="1" [(ngModel)]="gameDuration">
+                                <input matSliderThumb />
+                            </mat-slider>
+                        </div>
+                    </div>
+                    <div *ngIf="this.gameMode === 'mode Temps Limité'" class="const-input flex-row">
+                        <div class="label-container"><b>Temps bonus (s)</b></div>
+                        <div class="setting-container flex-column center">
+                            <mat-slider thumbLabel class="range-slider" min="0" max="120" step="1" [(ngModel)]="bonusTime">
+                                <input matSliderThumb />
+                            </mat-slider>
+                        </div>
+                    </div>
+                    <div class="const-input flex-row">
+                        <div class="label-container"><b>Mode triche</b></div>
+                        <div class="setting-container"><mat-slide-toggle color="accent"></mat-slide-toggle></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column main-container">
+                <p class="title"><b>Prêt(s) à jouer</b></p>
+                <div class="flex-row center player" *ngFor="let player of waitingRoomService.gameRoom?.userGame?.currentPlayers">
+                    <app-username [username]="player.username" [isShowAvatar]="true"></app-username>
+                </div>
+            </div>
+        </div>
+        <div
+            *ngIf="
+                waitingRoomService.gameRoom?.userGame?.potentialPlayers?.length !== 0 &&
+                waitingRoomService.gameRoom?.userGame?.potentialPlayers !== undefined
+            "
+        >
+            <p><b>Joueurs en attente</b></p>
+            <div class="flex-row center" *ngFor="let player of waitingRoomService.gameRoom?.userGame?.potentialPlayers">
+                <app-username [username]="player.username" [isShowAvatar]="true"></app-username>
+                <button class="temp" (click)="playerAccepted(player.username, player.isAndroid)">Accepter</button>
+                <button class="temp" (click)="playerRejected(player.username)">Refuser</button>
+            </div>
+        </div>
+        <div
+            *ngIf="
+                !waitingRoomService.gameRoom?.userGame?.potentialPlayers || (waitingRoomService.gameRoom?.userGame?.potentialPlayers)!.length === 0
+            "
+        >
+            <div class="wrapper">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <p>En attente de joueurs</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- IF PLAYER -->
+    <div *ngIf="waitingRoomService.gameRoom?.userGame?.creator !== waitingRoomService?.username" class="flex-column center">
+        <div class="flex-column main-container">
+            <p class="title"><b>Prêt(s) à jouer</b></p>
+            <div class="flex-row center player" *ngFor="let player of waitingRoomService.gameRoom?.userGame?.currentPlayers">
+                <app-username [username]="player.username" [isShowAvatar]="true"></app-username>
+            </div>
+        </div>
+        <div *ngIf="!this.rejected && isUsernameNotInCurrentPlayers()">
+            <div class="wrapper">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <p>En attente d'approbation</p>
+            </div>
+        </div>
+    </div>
+</div>

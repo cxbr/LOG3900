@@ -1,0 +1,3 @@
+<span class="star" *ngFor="let star of stars" (click)="onClick(star)" [ngClass]="{ selected: star <= rating, clicked: star === rating }"
+    >&#9733;</span
+>

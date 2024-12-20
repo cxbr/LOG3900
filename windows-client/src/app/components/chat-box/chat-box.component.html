@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<div class="flex-column center chat-container">
+    <div class="flex-row center chat-header">Section messages</div>
+    <div #chatbox class="chat-body">
+        <div *ngFor="let message of messages">
+            <div class="message-container" [ngClass]="message.username === this.username ? 'sent-by-player-1' : 'sent-by-player-2'">
+                <div>
+                    <div class="font-size message-username">
+                        <app-username #usernameComponent [username]="message.username" (loadingChange)="scrollToBottom()"></app-username>
+                        <ng-container *ngIf="!usernameComponent.isLoading">
+                            - <span class="date">{{ message.convertedTime }}</span>
+                            <ng-container *ngIf="message.username !== 'Système'">
+                                -
+                                <span *ngIf="message.isAndroid; else electronIcon" class="material-icons"> phone_android </span>
+                                <ng-template #electronIcon>
+                                    <span class="material-icons"> desktop_windows </span>
+                                </ng-template>
+                            </ng-container>
+                            <div class="font-size">{{ message.message }}</div>
+                        </ng-container>
+                        <ng-container *ngIf="usernameComponent.isLoading"> Loading.... </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-row center chat-footer">
+        <input
+            #inputElement
+            type="text"
+            placeholder="Tapez ici"
+            maxlength="200"
+            [(ngModel)]="message"
+            [ngClass]="{ 'error-border': applyBorder }"
+            (keyup.enter)="sendMessage($event)"
+            (focus)="chatInputFocus()"
+            (blur)="chatInputBlur()"
+        />
+        <button (click)="sendMessage($event)"><span class="material-icons"> send </span></button>
+    </div>
+</div>

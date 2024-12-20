@@ -1,0 +1,57 @@
+.replay-dialog {
+    margin-top: 3vh;
+    margin-left: 7vw;
+}
+
+.video-controls {
+    gap: 1vw;
+    scale: 0.5;
+}
+
+.speed {
+    margin-left: 5vw;
+}
+
+.speed-buttons {
+    display: flex;
+    gap: 1vw;
+}
+
+.speed-button.active {
+    background-color: var(--accent-color);
+}
+
+.speed-title {
+    margin-bottom: -4vh;
+}
+
+.progress-bar {
+    padding: 0;
+}
+
+app-replay-game-scoreboard,
+app-replay-play-area {
+    transform: scale(0.7);
+    transform-origin: top left;
+}
+
+.icons {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    transition: none;
+    scale: 1.6;
+}
+
+.canvas-container.flex-row.center {
+    width: 88vw;
+    height: 50vh;
+    margin-bottom: -10vh;
+    margin-left: 20vw;
+}
+
+.left-dialog {
+    margin-right: 60vw;
+}

@@ -1,0 +1,162 @@
+header {
+    height: 15vh;
+}
+
+.container {
+    gap: 2vw;
+}
+
+.main-container {
+    height: 25vh;
+    padding: 2vw;
+    border: solid;
+    border-radius: 3vh;
+}
+
+.const-input.flex-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.label-container,
+.setting-container {
+    display: flex;
+    align-items: center;
+}
+
+.label-container {
+    justify-content: flex-start;
+    margin-right: 2vw;
+}
+
+mat-slide-toggle {
+    margin-top: 2vh;
+    margin-left: -5.5vw;
+}
+
+.temp {
+    scale: 0.6;
+}
+
+.player {
+    margin-bottom: 2vh;
+}
+
+// RANGE SLIDER
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input[type='range'] {
+        -webkit-appearance: none;
+        overflow: hidden;
+        border-radius: 2vh;
+        width: 7vw;
+        cursor: pointer;
+        background-color: whitesmoke;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 1vw;
+        height: 1vh;
+        border-radius: 5vh;
+        background: #434343;
+        box-shadow: -5vw 0 0 8.17vh salmon;
+    }
+}
+
+// ANIMATION
+.wrapper {
+    width: 20%;
+    height: 20%;
+    position: fixed;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    margin-top: 15vh;
+}
+
+.wrapper p {
+    margin-top: 10vh;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: lightsalmon;
+    left: 15%;
+    transform-origin: 50%;
+    animation: circle 0.5s alternate infinite ease;
+}
+
+@keyframes circle {
+    0% {
+        top: 60px;
+        height: 5px;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+
+    40% {
+        height: 20px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+
+    100% {
+        top: 0%;
+    }
+}
+
+.circle:nth-child(2) {
+    left: 45%;
+    animation-delay: 0.2s;
+}
+
+.circle:nth-child(3) {
+    left: auto;
+    right: 15%;
+    animation-delay: 0.3s;
+}
+
+.shadow {
+    width: 20px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 62px;
+    transform-origin: 50%;
+    z-index: -1;
+    left: 15%;
+    filter: blur(1px);
+    animation: shadow 0.5s alternate infinite ease;
+}
+
+@keyframes shadow {
+    0% {
+        transform: scaleX(1.5);
+    }
+
+    40% {
+        transform: scaleX(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scaleX(0.2);
+        opacity: 0.4;
+    }
+}
+
+.shadow:nth-child(4) {
+    left: 45%;
+    animation-delay: 0.2s;
+}
+
+.shadow:nth-child(5) {
+    left: auto;
+    right: 15%;
+    animation-delay: 0.3s;
+}

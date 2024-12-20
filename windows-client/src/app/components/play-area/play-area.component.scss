@@ -1,0 +1,8 @@
+canvas {
+    margin: 0 2vw 0 2vw;
+    border: 3px solid black;
+}
+
+canvas.disabled {
+    pointer-events: none;
+}

@@ -1,0 +1,53 @@
+<div class="main-container flex-row">
+    <div class="flex-column">
+        <div class="infos flex-column center">
+            <div class="title">
+                <b>{{ slide.name }} </b>
+            </div>
+            <div *ngIf="slide.wantShoutout === true" class="flex-row center">
+                <div><b>Créateur :</b></div>
+                <div>{{ '&nbsp;' + username }}</div>
+            </div>
+            <div *ngIf="slide.wantShoutout === false" class="flex-row center">
+                <div><b>Créateur : </b></div>
+                <div>{{ '&nbsp;' + 'anonyme' }}</div>
+            </div>
+            <div class="flex-row center">
+                <div>
+                    <b>Nombre de différences :</b>
+                </div>
+                <div>{{ '&nbsp;' + slide.nbDifference }}</div>
+            </div>
+            <div class="flex-row center">
+                <b>Note :&nbsp;</b>
+                <p *ngIf="averageReviews">{{ averageReviews.toFixed(1) }}&nbsp;</p>
+                <span class="star-container" *ngFor="let star of stars">
+                    <ng-container *ngIf="star === 'half'">
+                        <span class="star-half"
+                            ><div>&#9733;</div>
+                            <div class="star-empty">&#9733;</div>
+                        </span>
+                    </ng-container>
+                    <ng-container *ngIf="star !== 'half'">
+                        <span [ngClass]="{ 'star-full': star === 'full', 'star-empty': star === 'empty' }">&#9733;</span>
+                    </ng-container>
+                </span>
+                <p>({{ numberOfReviews }})</p>
+            </div>
+        </div>
+
+        <div class="image-container flex-row center">
+            <img img src="{{ slide.image1url }}" />
+        </div>
+
+        <div class="overlay center">
+            <div class="flex-row">
+                <button *ngIf="this.page === 'management' && isCreator" (click)="renameCard()">
+                    Renommer<span class="material-icons">edit</span>
+                </button>
+                <button *ngIf="this.page === 'management'" (click)="deleteCard()">Supprimer<span class="material-icons"> delete </span></button>
+            </div>
+            <button *ngIf="this.page === 'selection'" (click)="onCardSelect()">Sélectionner<span class="material-icons"> touch_app </span></button>
+        </div>
+    </div>
+</div>
